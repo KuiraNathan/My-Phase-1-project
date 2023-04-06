@@ -1,9 +1,3 @@
-var cors = require('cors')
-var app = express()
- 
-app.use(cors())
-
-
 const appId = 'dfaf2544';
 const appKey = '47bf163680ba44196a1ff410abeda2f3';
 
@@ -38,7 +32,7 @@ searchButton.addEventListener('click', () => {
 					<div class="search-result">
 						<img src="${imageUrl}" alt="${title}">
 						<div class="search-result-details">
-							<button onclick="loadSnippet(${recipeUrl})">view recipe </button>
+							<h2><a href="${recipeUrl}" target="_blank">${title}</a></h2>
 						</div>
 					</div>
 				`;
@@ -50,18 +44,3 @@ searchButton.addEventListener('click', () => {
 			searchResults.innerHTML = '<p>An error occurred while fetching search results.</p>';
 		});
 });
-
-
-const targetEl = document.querySelector('.target');
-
-const loadSnippet = query => {
-    fetch("https://google.com/")
-    .then(res => {
-        if (res.ok) {
-            return `<embed type="text/html" src="https://google.com"  width="500" height="200">`;
-        }
-    })
-    .then(htmlSnippet => {
-        targetEl.innerHTML = htmlSnippet;
-    })
-};
